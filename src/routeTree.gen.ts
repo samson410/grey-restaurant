@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ReservationsRouteImport } from './routes/reservations'
 import { Route as PressRouteImport } from './routes/press'
 import { Route as MenuRouteImport } from './routes/menu'
+import { Route as MarketRouteImport } from './routes/market'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as AboutRouteImport } from './routes/about'
@@ -30,6 +31,11 @@ const PressRoute = PressRouteImport.update({
 const MenuRoute = MenuRouteImport.update({
   id: '/menu',
   path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketRoute = MarketRouteImport.update({
+  id: '/market',
+  path: '/market',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/experience': typeof ExperienceRoute
   '/gallery': typeof GalleryRoute
+  '/market': typeof MarketRoute
   '/menu': typeof MenuRoute
   '/press': typeof PressRoute
   '/reservations': typeof ReservationsRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/experience': typeof ExperienceRoute
   '/gallery': typeof GalleryRoute
+  '/market': typeof MarketRoute
   '/menu': typeof MenuRoute
   '/press': typeof PressRoute
   '/reservations': typeof ReservationsRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/experience': typeof ExperienceRoute
   '/gallery': typeof GalleryRoute
+  '/market': typeof MarketRoute
   '/menu': typeof MenuRoute
   '/press': typeof PressRoute
   '/reservations': typeof ReservationsRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/experience'
     | '/gallery'
+    | '/market'
     | '/menu'
     | '/press'
     | '/reservations'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/experience'
     | '/gallery'
+    | '/market'
     | '/menu'
     | '/press'
     | '/reservations'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/experience'
     | '/gallery'
+    | '/market'
     | '/menu'
     | '/press'
     | '/reservations'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ExperienceRoute: typeof ExperienceRoute
   GalleryRoute: typeof GalleryRoute
+  MarketRoute: typeof MarketRoute
   MenuRoute: typeof MenuRoute
   PressRoute: typeof PressRoute
   ReservationsRoute: typeof ReservationsRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/menu'
       fullPath: '/menu'
       preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market': {
+      id: '/market'
+      path: '/market'
+      fullPath: '/market'
+      preLoaderRoute: typeof MarketRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ExperienceRoute: ExperienceRoute,
   GalleryRoute: GalleryRoute,
+  MarketRoute: MarketRoute,
   MenuRoute: MenuRoute,
   PressRoute: PressRoute,
   ReservationsRoute: ReservationsRoute,
