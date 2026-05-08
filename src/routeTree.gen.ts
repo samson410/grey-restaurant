@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PressRouteImport } from './routes/press'
 import { Route as MenuRouteImport } from './routes/menu'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PressRoute = PressRouteImport.update({
+  id: '/press',
+  path: '/press',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MenuRoute = MenuRouteImport.update({
   id: '/menu',
   path: '/menu',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/experience': typeof ExperienceRoute
   '/gallery': typeof GalleryRoute
   '/menu': typeof MenuRoute
+  '/press': typeof PressRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/experience': typeof ExperienceRoute
   '/gallery': typeof GalleryRoute
   '/menu': typeof MenuRoute
+  '/press': typeof PressRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,21 @@ export interface FileRoutesById {
   '/experience': typeof ExperienceRoute
   '/gallery': typeof GalleryRoute
   '/menu': typeof MenuRoute
+  '/press': typeof PressRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/experience' | '/gallery' | '/menu'
+  fullPaths: '/' | '/about' | '/experience' | '/gallery' | '/menu' | '/press'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/experience' | '/gallery' | '/menu'
-  id: '__root__' | '/' | '/about' | '/experience' | '/gallery' | '/menu'
+  to: '/' | '/about' | '/experience' | '/gallery' | '/menu' | '/press'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/experience'
+    | '/gallery'
+    | '/menu'
+    | '/press'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,10 +93,18 @@ export interface RootRouteChildren {
   ExperienceRoute: typeof ExperienceRoute
   GalleryRoute: typeof GalleryRoute
   MenuRoute: typeof MenuRoute
+  PressRoute: typeof PressRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/press': {
+      id: '/press'
+      path: '/press'
+      fullPath: '/press'
+      preLoaderRoute: typeof PressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/menu': {
       id: '/menu'
       path: '/menu'
@@ -125,6 +149,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExperienceRoute: ExperienceRoute,
   GalleryRoute: GalleryRoute,
   MenuRoute: MenuRoute,
+  PressRoute: PressRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
