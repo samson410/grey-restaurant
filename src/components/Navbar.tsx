@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
-  { label: "Home", to: "#home" },
-  { label: "About", to: "#about" },
-  { label: "Menu", to: "#menu" },
-  { label: "Experience", to: "#experience" },
-  { label: "Gallery", to: "#gallery" },
-  { label: "Reviews", to: "#reviews" },
-  { label: "Contact", to: "#contact" },
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Menu", to: "/menu" },
+  { label: "Experience", to: "/experience" },
+  { label: "Gallery", to: "/gallery" },
+  { label: "Press", to: "/press" },
+  { label: "Market", to: "/market" },
+  { label: "Contact", to: "/contact" },
 ];
 
 export function Navbar() {
@@ -34,58 +36,60 @@ export function Navbar() {
           scrolled ? "py-3" : "py-6"
         }`}
       >
-        <div
-          className={`mx-auto max-w-[1400px] px-6 lg:px-10 transition-all duration-700 ${
-            scrolled ? "" : ""
-          }`}
-        >
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <nav
             className={`flex items-center justify-between transition-all duration-700 ${
-              scrolled
-                ? "glass rounded-full px-6 py-3"
-                : "px-2 py-2"
+              scrolled ? "glass rounded-full px-6 py-3" : "px-2 py-2"
             }`}
           >
-            <a href="#home" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group">
               <span className="font-display text-2xl tracking-[0.18em] text-cream">
                 THE <span className="text-gold-gradient">GREY</span>
               </span>
-            </a>
+            </Link>
 
-            <ul className="hidden lg:flex items-center gap-9">
-              {links.slice(0, -1).map((l) => (
+            <ul className="hidden lg:flex items-center gap-7">
+              {links.map((l) => (
                 <li key={l.to}>
-                  <a
-                    href={l.to}
-                    className="link-line text-[0.72rem] tracking-[0.28em] uppercase text-cream/80 hover:text-gold transition-colors"
+                  <Link
+                    to={l.to}
+                    activeOptions={{ exact: true }}
+                    activeProps={{ className: "text-gold" }}
+                    className="link-line text-[0.7rem] tracking-[0.28em] uppercase text-cream/80 hover:text-gold transition-colors"
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
 
-            <a href="#reservations" className="hidden lg:inline-flex btn-gold !py-3 !px-6 text-[0.7rem]">
-              Reserve
-            </a>
+            <div className="hidden lg:flex items-center gap-3">
+              <ThemeToggle />
+              <Link to="/reservations" className="btn-gold !py-3 !px-6 text-[0.7rem]">
+                Reserve
+              </Link>
+            </div>
 
-            <button
-              onClick={() => setOpen(true)}
-              className="lg:hidden text-cream p-2"
-              aria-label="Open menu"
-            >
-              <Menu size={22} />
-            </button>
+            <div className="lg:hidden flex items-center gap-2">
+              <ThemeToggle />
+              <button
+                onClick={() => setOpen(true)}
+                className="text-cream p-2"
+                aria-label="Open menu"
+              >
+                <Menu size={22} />
+              </button>
+            </div>
           </nav>
         </div>
       </header>
 
       {/* Mobile fullscreen overlay */}
       <div
-        className={`fixed inset-0 z-[60] bg-ink/98 backdrop-blur-xl transition-all duration-700 ${
+        className={`fixed inset-0 z-[60] backdrop-blur-xl transition-all duration-700 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        style={{ background: "oklch(0.11 0.01 60 / 0.98)" }}
+        style={{ background: "color-mix(in oklab, var(--background) 96%, transparent)" }}
       >
         <div className="flex items-center justify-between p-6 lg:p-10">
           <span className="font-display text-2xl tracking-[0.18em] text-cream">
@@ -95,7 +99,7 @@ export function Navbar() {
             <X size={22} />
           </button>
         </div>
-        <ul className="flex flex-col items-center justify-center gap-7 mt-16">
+        <ul className="flex flex-col items-center justify-center gap-6 mt-12">
           {links.map((l, i) => (
             <li
               key={l.to}
@@ -104,19 +108,20 @@ export function Navbar() {
               }`}
               style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}
             >
-              <a
-                href={l.to}
+              <Link
+                to={l.to}
                 onClick={() => setOpen(false)}
-                className="font-display text-4xl text-cream hover:text-gold transition-colors"
+                activeProps={{ className: "text-gold" }}
+                className="font-display text-3xl text-cream hover:text-gold transition-colors"
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
           <li className="mt-6">
-            <a href="#reservations" onClick={() => setOpen(false)} className="btn-solid">
+            <Link to="/reservations" onClick={() => setOpen(false)} className="btn-solid">
               Reserve a Table
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
