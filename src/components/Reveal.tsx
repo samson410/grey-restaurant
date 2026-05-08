@@ -9,7 +9,7 @@ export function Reveal({
   children: ReactNode;
   delay?: 0 | 1 | 2 | 3 | 4;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
 }) {
   const ref = useRef<HTMLElement | null>(null);
   const [seen, setSeen] = useState(false);
