@@ -73,7 +73,39 @@
   --shadow-soft: 0 30px 80px -30px oklch(0 0 0 / 0.6);
 }
 
-.dark { color-scheme: dark; }
+:root { color-scheme: dark; }
+
+/* LIGHT THEME — warm ivory + ink + gold */
+.light {
+  color-scheme: light;
+  --ink: oklch(0.97 0.012 80);              /* light cream surface */
+  --charcoal: oklch(0.93 0.014 80);         /* slightly darker surface */
+  --background: oklch(0.98 0.012 85);
+  --foreground: oklch(0.18 0.012 60);       /* dark ink text */
+  --cream: oklch(0.18 0.012 60);            /* "cream" now means ink (text) */
+  --gold: oklch(0.55 0.13 65);              /* deeper gold for contrast */
+  --gold-soft: oklch(0.45 0.10 60);
+
+  --card: oklch(0.96 0.012 80);
+  --card-foreground: oklch(0.18 0.012 60);
+  --popover: oklch(0.96 0.012 80);
+  --popover-foreground: oklch(0.18 0.012 60);
+  --primary: oklch(0.55 0.13 65);
+  --primary-foreground: oklch(0.98 0.012 85);
+  --secondary: oklch(0.90 0.014 80);
+  --secondary-foreground: oklch(0.18 0.012 60);
+  --muted: oklch(0.92 0.012 80);
+  --muted-foreground: oklch(0.40 0.012 70);
+  --accent: oklch(0.55 0.13 65);
+  --accent-foreground: oklch(0.98 0.012 85);
+  --border: oklch(0.30 0.015 70 / 0.18);
+  --input: oklch(0.92 0.012 80);
+  --ring: oklch(0.55 0.13 65 / 0.5);
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.62 0.13 70), oklch(0.45 0.10 60));
+  --gradient-fade: linear-gradient(180deg, transparent, oklch(0.98 0.012 85));
+  --shadow-glow: 0 0 40px -10px oklch(0.55 0.13 65 / 0.3);
+}
 
 @layer base {
   * { border-color: var(--color-border); }
