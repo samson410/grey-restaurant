@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MenuRouteImport } from './routes/menu'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const MenuRoute = MenuRouteImport.update({
   id: '/menu',
   path: '/menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExperienceRoute = ExperienceRouteImport.update({
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/experience': typeof ExperienceRoute
+  '/gallery': typeof GalleryRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/experience': typeof ExperienceRoute
+  '/gallery': typeof GalleryRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/experience': typeof ExperienceRoute
+  '/gallery': typeof GalleryRoute
   '/menu': typeof MenuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/experience' | '/menu'
+  fullPaths: '/' | '/about' | '/experience' | '/gallery' | '/menu'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/experience' | '/menu'
-  id: '__root__' | '/' | '/about' | '/experience' | '/menu'
+  to: '/' | '/about' | '/experience' | '/gallery' | '/menu'
+  id: '__root__' | '/' | '/about' | '/experience' | '/gallery' | '/menu'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ExperienceRoute: typeof ExperienceRoute
+  GalleryRoute: typeof GalleryRoute
   MenuRoute: typeof MenuRoute
 }
 
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/menu'
       fullPath: '/menu'
       preLoaderRoute: typeof MenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/experience': {
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ExperienceRoute: ExperienceRoute,
+  GalleryRoute: GalleryRoute,
   MenuRoute: MenuRoute,
 }
 export const routeTree = rootRouteImport
