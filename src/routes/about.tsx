@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { PageHero } from "@/components/PageHero";
 import exterior from "@/assets/exterior.jpg";
 import interior from "@/assets/interior.jpg";
-import cofounders from "@/assets/cofounders.jpg";
+import cofounders from "@/assets/ceo.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -89,37 +89,41 @@ function AboutPage() {
             </Reveal>
           </div>
 
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <Reveal className="lg:col-span-6">
-              <div className="relative group">
-                <div className="relative aspect-[4/5] overflow-hidden bg-ink border border-gold/20">
-                  <img
-                    src={cofounders}
-                    alt="Johno Morisano and Chef Mashama Bailey, co-founders of The Grey"
-                    className="h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-[1.04]"
-                    loading="lazy"
-                    width={1024}
-                    height={1280}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="text-[0.6rem] tracking-[0.32em] uppercase text-gold/90">Placeholder Image</div>
-                    <div className="mt-1 font-display italic text-cream/80 text-sm">Replace with portrait of Johno Morisano & Chef Mashama Bailey</div>
-                  </div>
-                </div>
-                <div className="absolute -inset-2 -z-10 bg-gold/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-              </div>
-            </Reveal>
+          <div className="grid lg:grid-cols-6 gap-12 lg:gap-16 items-center">
+           <Reveal className="lg:col-span-6">
+  <div className="relative group flex justify-center">
+    <div className="relative w-full max-w-[520px] aspect-[4/5] overflow-hidden bg-ink border border-gold/20">
+      <img
+        src={cofounders}
+        alt="Johno Morisano and Chef Mashama Bailey, co-founders of The Grey"
+        className="h-full w-full object-cover transition-transform duration-[1600ms] group-hover:scale-[1.04]"
+        loading="lazy"
+        width={700}
+        height={700}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
+
+      <div className="absolute bottom-6 left-6 right-6">
+        <div className="text-[0.6rem] tracking-[0.32em] uppercase text-gold/90">
+          C.E.O
+        </div>
+        <div className="mt-1 font-display italic text-cream/80 text-sm">
+          Johno Morisano & Chef Mashama Bailey
+        </div>
+      </div>
+    </div>
+
+    <div className="absolute -inset-2 -z-10 bg-gold/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+  </div>
+</Reveal>
 
             <div className="lg:col-span-6 space-y-8">
               <Reveal delay={1}>
                 <div>
                   <div className="text-[0.7rem] tracking-[0.32em] uppercase text-gold mb-2">Co-Founder & Managing Partner</div>
-                  <h3 className="font-display text-3xl md:text-4xl text-cream">Johno Morisano</h3>
+                  <h3 className="font-display text-3xl md:text-4xl text-cream">John o. Morisano</h3>
                   <p className="mt-4 font-serif text-cream/75 leading-relaxed">
-                    A first-time restaurateur turned hospitality entrepreneur, Johno led the
-                    restoration of the 1938 Greyhound terminal and built the operational backbone
-                    of Grey Spaces — the growing hospitality and lifestyle company behind The Grey.
+                    Johno is the product of a tight-knit Italian family, born and raised in New York City. He has been working in the world of media startups for most of his career which gave him the opportunity to travel extensively and develop his love for food and wine. In his free time, he and his wife travelled some more always driven by the location of their next meal. Food and wine has been their primary hobby and the common thread for their personal and professional relationships for the past two decades. After buying a home in Savannah in 2011, Johno started investing in the community he has come to love. The Grey, which was named Eater’s restaurant of the Year for 2017/18, is the result of his passions for building businesses, food, wine, people and energy coming together under one roof. Johno remained active in the Savannah community, giving back to local organizations by hosting lively events in The Yard, The Grey’s outdoor area, the proceeds of each benefitting a different local organization. He is also helping to reshape and expand the mission of the Edna Lewis Foundation, a Board he joined as Treasurer in 2016, which revives, preserves and celebrates the rich history of African American cookery in America. Johno spends time in Savannah and NYC, he adores his wife Carol more than words can express and he would be lost without his dogs Anchovy and Otter.
                   </p>
                 </div>
               </Reveal>
@@ -133,9 +137,7 @@ function AboutPage() {
                   <div className="text-[0.7rem] tracking-[0.32em] uppercase text-gold mb-2">Co-Founder & Executive Chef</div>
                   <h3 className="font-display text-3xl md:text-4xl text-cream">Chef Mashama Bailey</h3>
                   <p className="mt-4 font-serif text-cream/75 leading-relaxed">
-                    James Beard Award-winning chef whose Port City Southern cooking is deeply
-                    layered, contextual, and provocative — drawing from her New York training and
-                    Savannah roots to redefine the modern American South.
+                    Mashama is a New York City girl – born in the Bronx and raised in Queens. Her maternal roots hail from Waynseboro, GA and as a result Mashama attended grammar school in Savannah at Charles Ellis and spent many summers at her grandmother’s in Waynesboro. Mashama learned to cook at the hands of the women in her family with grandmothers, aunts and her mom giving her the best kind of education – a real world one. She attended ICE to round out that education and has studied in France and travelled far for food. She spent a dozen years cooking throughout New York City the last four of which were at Prune on Manhattan’s Lower East Side under the tutelage of her friend and mentor, Gabrielle Hamilton. As executive chef of The Grey, Mashama has earned a number of accolades, including James Beard Foundation’s Best Chef Southeast award in 2019. She also serves as Vice Chairman on the board of the Edna Lewis Foundation, working to preserve and celebrate Edna’s legacy that heavily influenced her menu at The Grey. Mashama surrounds herself with family, friends and food and she is a firm believer in the old adage that you learn something new every day.
                   </p>
                 </div>
               </Reveal>

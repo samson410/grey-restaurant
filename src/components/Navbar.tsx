@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
+// import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { label: "Home", to: "/" },
@@ -64,14 +64,14 @@ export function Navbar() {
             </ul>
 
             <div className="hidden lg:flex items-center gap-3">
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
               <Link to="/reservations" className="btn-gold !py-3 !px-6 text-[0.7rem]">
                 Reserve
               </Link>
             </div>
 
             <div className="lg:hidden flex items-center gap-2">
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
               <button
                 onClick={() => setOpen(true)}
                 className="text-cream p-2"
@@ -96,7 +96,7 @@ export function Navbar() {
             THE <span className="text-gold-gradient">GREY</span>
           </span>
           <button onClick={() => setOpen(false)} className="text-cream p-2" aria-label="Close menu">
-            <X size={22} />
+            <X size={22}/>
           </button>
         </div>
         <ul className="flex flex-col items-center justify-center gap-6 mt-12">
@@ -106,8 +106,7 @@ export function Navbar() {
               className={`transition-all duration-700 ${
                 open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
-              style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}
-            >
+              style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}>
               <Link
                 to={l.to}
                 onClick={() => setOpen(false)}
