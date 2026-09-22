@@ -209,7 +209,7 @@ function PressStrip() {
   }, []);
   return (
     <section className="relative py-28 md:py-40 px-6 lg:px-10 overflow-hidden">
-      <div className="absolute inset-0 opacity-25">
+      <div className="absolute inset-0 ">
         <img src={interior} alt="" className="h-full w-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-ink/85" />
       </div>
